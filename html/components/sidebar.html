@@ -1,0 +1,56 @@
+<!-- ========== Sidebar reutilizável ========== -->
+<aside class="side-menu" id="sideMenu">
+    <nav class="menu-nav">
+        <h3>📚 Tutoriais</h3>
+        
+        <!-- Estrutura genérica dos tutoriais -->
+        <!-- TODO: Editar o texto com informações reais -->
+        <div class="tutorial-section">
+            <div class="tutorial-title">📋 Cadastro de Serviços</div>
+            <ul class="tutorial-submenu show">
+                <li><a class="menu-link route-link" href="#" data-route="cadastro-servicos.html#introducao">Introdução</a></li>
+                <li><a class="menu-link route-link" href="#" data-route="cadastro-servicos.html#requisitos">Requisitos</a></li>
+                <li><a class="menu-link route-link" href="#" data-route="cadastro-servicos.html#procedimento">Procedimento</a></li>
+                <li><a class="menu-link route-link" href="#" data-route="cadastro-servicos.html#finalizacao">Finalização</a></li>
+                <li><a class="menu-link route-link" href="#" data-route="cadastro-servicos.html#duvidas">Dúvidas</a></li>
+            </ul>
+        </div>
+
+        <div class="tutorial-section">
+            <div class="tutorial-title">📄 Cartas de Serviço</div>
+            <ul class="tutorial-submenu show">
+                <li><a class="menu-link route-link" href="#" data-route="cartas-servico.html#introducao">Introdução</a></li>
+                <li><a class="menu-link route-link" href="#" data-route="cartas-servico.html#requisitos">Requisitos</a></li>
+                <li><a class="menu-link route-link" href="#" data-route="cartas-servico.html#procedimento">Procedimento</a></li>
+                <li><a class="menu-link route-link" href="#" data-route="cartas-servico.html#finalizacao">Finalização</a></li>
+                <li><a class="menu-link route-link" href="#" data-route="cartas-servico.html#duvidas">Dúvidas</a></li>
+            </ul>
+        </div>
+
+        <div class="tutorial-section">
+            <div class="tutorial-title">🔐 Digitize</div>
+            <ul class="tutorial-submenu show">
+                <li><a class="menu-link route-link" href="#" data-route="digitize.html#introducao">Introdução</a></li>
+                <li><a class="menu-link route-link" href="#" data-route="digitize.html#requisitos">Requisitos</a></li>
+                <li><a class="menu-link route-link" href="#" data-route="digitize.html#procedimento">Procedimento</a></li>
+                <li><a class="menu-link route-link" href="#" data-route="digitize.html#finalizacao">Finalização</a></li>
+                <li><a class="menu-link route-link" href="#" data-route="digitize.html#duvidas">Dúvidas</a></li>
+            </ul>
+        </div>
+
+        <!-- Link para Home -->
+        <div class="tutorial-section">
+            <a href="#" class="tutorial-title menu-link home-link">
+                🏠 Voltar ao Início
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Botão de comprimir/expandir o menu lateral -->
+    <!-- TODO: Ajustar para algo mais "elegante" -->
+    <!-- FIXME: Se scrollar o conteúdo principal, o menu lateral fica bugado  -->
+    <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Comprimir/Expandir menu">
+        <!-- TODO: Não achei que o ícone ficou legal, mas por enquanto resolve o problema -->
+        <span class="collapse-arrow">◄</span>
+    </button>
+</aside>

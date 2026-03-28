@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Serviços - Portal de Tutoriais</title>
+    
+    <!-- ========== Css global ========== -->
+    <link rel="stylesheet" href="../../css/main.css">
+    
+    <!-- ========== Css do layout principal ========== -->
+    <link rel="stylesheet" href="../../css/layouts/grid.css">
+    
+    <!-- ========== Css dos componentes ========== -->
+    <link rel="stylesheet" href="../../css/shared/header.css">
+    <link rel="stylesheet" href="../../css/shared/sidebar.css">
+    <link rel="stylesheet" href="../../css/shared/footer.css">
+    
+    <!-- ========== Css dos tutoriais ========== -->
+    <link rel="stylesheet" href="../../css/tutoriais/base.css">
+    <link rel="stylesheet" href="../../css/tutoriais/cadastro-servicos.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ========== HEADER ========== -->
+        <div id="header-container"></div>
+
+        <!-- ========== LAYOUT PRINCIPAL ========== -->
+        <div class="layout-wrapper">
+            <!-- ========== SIDEBAR ========== -->
+            <div id="sidebar-container"></div>
+
+            <!-- ========== CONTEÚDO PRINCIPAL ========== -->
+            <main class="main-content">
+                <div class="content-wrapper">
+                    <!-- Seção 1: Introdução -->
+                    <section class="tutorial-section" id="introducao">
+                        <h2>📋 Cadastro de Serviços - Introdução</h2>
+                        <p>
+                            O cadastro de serviços é o primeiro passo para configurar seu sistema. Esta seção introduz os conceitos fundamentais e a importância de um cadastro bem estruturado.
+                        </p>
+                        <div class="section-highlight">
+                            <strong>Objetivo:</strong> Entender a importância e os objectivos do cadastro de serviços.
+                        </div>
+                    </section>
+
+                    <!-- Seção 2: Requisitos -->
+                    <section class="tutorial-section" id="requisitos">
+                        <h2>Requisitos Necessários</h2>
+                        <ul class="requirements-list">
+                            <li>Acesso de administrador no sistema</li>
+                            <li>Informações básicas dos serviços (nome, descrição)</li>
+                            <li>Definição de horários de funcionamento</li>
+                            <li>Identificação de responsáveis</li>
+                            <li>Documentação dos procedimentos</li>
+                        </ul>
+                    </section>
+
+                    <!-- Seção 3: Procedimento Passo a Passo -->
+                    <section class="tutorial-section" id="procedimento">
+                        <h2>Procedimento Passo a Passo</h2>
+                        <ol class="procedure-steps">
+                            <li class="step">
+                                <h3>Acesse o Sistema</h3>
+                                <p>Faça login com suas credenciais de administrador no portal.</p>
+                            </li>
+                            <li class="step">
+                                <h3>Navegue até Serviços</h3>
+                                <p>No menu principal, selecione a opção "Serviços".</p>
+                            </li>
+                            <li class="step">
+                                <h3>Clique em Novo Serviço</h3>
+                                <p>Procure pelo botão "Novo Serviço" e clique para criar um novo cadastro.</p>
+                            </li>
+                            <li class="step">
+                                <h3>Preencha os Dados</h3>
+                                <p>Complete todos os campos obrigatórios com as informações do serviço.</p>
+                            </li>
+                            <li class="step">
+                                <h3>Revise e Salve</h3>
+                                <p>Verifique todas as informações e clique em "Salvar".</p>
+                            </li>
+                        </ol>
+                    </section>
+
+                    <!-- Seção 4: Finalização -->
+                    <section class="tutorial-section" id="finalizacao">
+                        <h2>Finalização e Confirmação</h2>
+                        <p>
+                            Após salvar, seu serviço estará cadastrado no sistema e pronto para uso. Você poderá:
+                        </p>
+                        <ul class="finalization-items">
+                            <li>Editar o serviço a qualquer momento</li>
+                            <li>Adicionar horários especiais</li>
+                            <li>Vinculara responsáveis</li>
+                            <li>Disponibilizar ao público</li>
+                        </ul>
+                    </section>
+
+                    <!-- Seção 5: Dúvidas Frequentes -->
+                    <section class="tutorial-section" id="duvidas">
+                        <h2>❓ Dúvidas Frequentes</h2>
+                        <div class="faq-container">
+                            <details class="faq-item">
+                                <summary>Posso editar um serviço depois de criado?</summary>
+                                <p>Sim! Você pode editar todas as informações a qualquer momento, acessando novamente o serviço no sistema.</p>
+                            </details>
+                            <details class="faq-item">
+                                <summary>Como remover um serviço?</summary>
+                                <p>Acesse o serviço, clique em "Opções" e selecione "Remover". Você pode recuperar serviços removidos dentro de 30 dias.</p>
+                            </details>
+                            <details class="faq-item">
+                                <summary>Qual é o limite de serviços que posso cadastrar?</summary>
+                                <p>Não há limite de serviços. Você pode cadastrar quantos precisar!</p>
+                            </details>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+
+        <!-- ========== FOOTER ========== -->
+        <div id="footer-container"></div>
+    </div>
+
+    <!-- ========== SCRIPTS COMPARTILHADOS ========== -->
+    <script src="../../static/js/shared/utils.js"></script>
+    <script src="../../static/js/shared/sidebar.js"></script>
+    
+    <!-- ========== SCRIPT DO TUTORIAL ========== -->
+    <script src="../../static/js/tutoriais/01-cadastro-servicos.js"></script>
+    
+    <!-- ========== LOADER DE COMPONENTES ========== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carregar header
+            fetch('../components/header.html')
+                .then(response => response.text())
+                .then(html => document.getElementById('header-container').innerHTML = html);
+            
+            // Carregar sidebar
+            fetch('../components/sidebar.html')
+                .then(response => response.text())
+                .then(html => document.getElementById('sidebar-container').innerHTML = html)
+                .then(() => {
+                    // Inicializar sidebar após carregamento
+                    if (typeof SidebarModule !== 'undefined') {
+                        SidebarModule.init();
+                    }
+                });
+            
+            // Carregar footer
+            fetch('../components/footer.html')
+                .then(response => response.text())
+                .then(html => document.getElementById('footer-container').innerHTML = html);
+            
+            // Inicializar tutorial
+            if (typeof CadastroServicosModule !== 'undefined') {
+                CadastroServicosModule.init();
+            }
+        });
+    </script>
+</body>
+</html>
