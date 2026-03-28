@@ -1,7 +1,7 @@
 /* Css comum para todas as seções de tutorial */
 .content-wrapper {
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
     padding: 3rem 2rem;
     background-color: var(--white);
 }
@@ -53,6 +53,6 @@
 
 @media (min-width: 1200px) {
     .content-wrapper {
-        max-width: 1000px;
+        max-width: none;
     }
 }
