@@ -153,13 +153,13 @@
 }
 
 .faq-item summary:before {
-    content: "▶";
+    content: "+";
     margin-right: 1rem;
-    transition: transform 0.3s ease;
+    font-weight: 700;
 }
 
 .faq-item[open] summary:before {
-    transform: rotate(90deg);
+    content: "-";
 }
 
 .faq-item p {
