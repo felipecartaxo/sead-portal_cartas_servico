@@ -36,6 +36,7 @@ const SidebarModule = (() => {
         const sidebarCollapseBtn = getSidebarCollapseBtn();
 
         normalizeLinks();
+        initTutorialToggles();
 
         // Menu toggle para mobile
         if (menuToggle) {
@@ -62,6 +63,26 @@ const SidebarModule = (() => {
         window.addEventListener('resize', handleResize);
 
         UtilsModule.log('Sidebar initialized', 'info');
+    };
+
+    // Inicializa o comportamento de expandir/colapsar os submenus
+    const initTutorialToggles = () => {
+        const sideMenu = getSideMenu();
+        if (!sideMenu) return;
+
+        const tutorialTitles = sideMenu.querySelectorAll('.tutorial-section .tutorial-title:not(.home-link)');
+
+        tutorialTitles.forEach(title => {
+            title.classList.remove('active');
+
+            title.addEventListener('click', () => {
+                const submenu = title.nextElementSibling;
+                if (!submenu || !submenu.classList.contains('tutorial-submenu')) return;
+
+                submenu.classList.toggle('show');
+                title.classList.toggle('active');
+            });
+        });
     };
 
     // Toggle do menu mobile (burger button)
