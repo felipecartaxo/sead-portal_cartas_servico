@@ -77,26 +77,31 @@
     <!-- ========== Loader de componentes ========== -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Carregar header
-            fetch('html/components/header.html')
+            const loadHeader = fetch('html/components/header.html')
                 .then(response => response.text())
-                .then(html => document.getElementById('header-container').innerHTML = html);
-            
-            // Carregar sidebar
-            fetch('html/components/sidebar.html')
-                .then(response => response.text())
-                .then(html => document.getElementById('sidebar-container').innerHTML = html)
-                .then(() => {
-                    // Inicializar sidebar após carregamento
-                    if (typeof SidebarModule !== 'undefined') {
-                        SidebarModule.init();
-                    }
+                .then(html => {
+                    document.getElementById('header-container').innerHTML = html;
                 });
-            
-            // Carregar footer
-            fetch('html/components/footer.html')
+
+            const loadSidebar = fetch('html/components/sidebar.html')
                 .then(response => response.text())
-                .then(html => document.getElementById('footer-container').innerHTML = html);
+                .then(html => {
+                    document.getElementById('sidebar-container').innerHTML = html;
+                });
+
+            const loadFooter = fetch('html/components/footer.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('footer-container').innerHTML = html;
+                });
+
+            Promise.all([loadHeader, loadSidebar]).then(() => {
+                if (typeof SidebarModule !== 'undefined') {
+                    SidebarModule.init();
+                }
+            });
+
+            loadFooter;
         });
     </script>
 </body>

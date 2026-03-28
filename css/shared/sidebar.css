@@ -5,43 +5,24 @@ vá até o final da página */
 .side-menu {
     width: var(--menu-width);
     background-color: var(--white);
-    border-right: 1px solid #ddd;
-    box-shadow: var(--shadow);
+    border: 1px solid #ddd;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
     overflow-y: auto;
     transition: all var(--transition-speed) ease;
-    padding: 1.5rem 0;
-    height: 100%;
-    min-height: 100%;
-    flex-shrink: 0;
+    padding: 1.2rem 0 0.3rem;
+    height: 540px;
+    max-height: calc(100vh - 92px);
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: fixed;
+    top: 74px;
+    left: 1rem;
+    z-index: 1001;
+    border-radius: 10px;
 }
 
 .side-menu.collapsed {
     display: none;
-}
-
-.side-menu.compressed {
-    width: 70px;
-    align-items: center;
-    padding: 1.5rem 0;
-}
-
-.side-menu.compressed .menu-nav {
-    display: none;
-}
-
-.side-menu.compressed .sidebar-collapse-btn {
-    justify-content: center;
-    position: static;
-    width: 100%;
-    padding: 1rem;
-    border: none;
-}
-
-.side-menu.compressed .sidebar-collapse-btn .collapse-arrow {
-    transform: scaleX(-1);
 }
 
 /* Menu de navegação */
@@ -49,20 +30,23 @@ vá até o final da página */
     padding: 0 1rem;
     flex: 1;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .menu-nav h3 {
     color: var(--secondary-color);
     margin-bottom: 1.5rem;
     padding: 0 0.5rem;
-    font-size: 1.1rem;
+    font-size: 1.65rem;
     font-weight: 700;
 }
 
 /* Seções de tutorial */
 .tutorial-section {
-    margin-bottom: 1rem;
+    margin-bottom: 0.7rem;
     border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.2rem;
 }
 
 .tutorial-section:last-child {
@@ -73,7 +57,7 @@ vá até o final da página */
 .menu-link {
     display: block;
     width: 100%;
-    padding: 0.75rem 0.5rem;
+    padding: 0.5rem 0.65rem;
     background: none;
     border: none;
     cursor: pointer;
@@ -95,7 +79,7 @@ vá até o final da página */
 /* Botão de tutorial para expandir/colapsar */
 .tutorial-title {
     width: 100%;
-    padding: 0.75rem 0.5rem;
+    padding: 0.5rem 0.65rem;
     background: none;
     border: none;
     cursor: pointer;
@@ -156,7 +140,7 @@ vá até o final da página */
 
 .tutorial-submenu a {
     display: block;
-    padding: 0.6rem 1.5rem;
+    padding: 0.45rem 1.2rem;
     color: var(--text-color);
     text-decoration: none;
     transition: all var(--transition-speed) ease;
@@ -171,33 +155,9 @@ vá até o final da página */
     transform: translateX(5px);
 }
 
-/* Botão de comprimir/expandir */
-.sidebar-collapse-btn {
-    background: none;
-    border: none;
-    border-top: 1px solid #e0e0e0;
-    padding: 1rem 0.5rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-color);
-    font-size: 1.2rem;
-    transition: all var(--transition-speed) ease;
-    flex-shrink: 0;
-    height: 50px;
-    min-height: 50px;
-}
-
-.sidebar-collapse-btn:hover {
-    background-color: var(--light-bg);
-    color: var(--secondary-color);
-    transform: scale(1.1);
-}
-
-.sidebar-collapse-btn .collapse-arrow {
-    display: block;
-    transition: transform var(--transition-speed) ease;
+.menu-nav .tutorial-section:last-child {
+    margin-top: auto;
+    margin-bottom: 0.2rem;
 }
 
 /* Barra de rolagem */
@@ -220,24 +180,12 @@ vá até o final da página */
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .sidebar-collapse-btn {
-        display: none;
-    }
-
     .side-menu {
-        position: fixed;
-        left: 0;
-        top: 70px;
-        height: calc(100vh - 70px);
-        z-index: 1000;
-        border-right: 2px solid var(--secondary-color);
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-        width: var(--menu-width);
-        display: flex;
-    }
-
-    .side-menu.collapsed {
-        display: none;
+        top: 64px;
+        left: 0.75rem;
+        width: min(92vw, var(--menu-width));
+        height: 70vh;
+        max-height: calc(100vh - 80px);
     }
 }
 

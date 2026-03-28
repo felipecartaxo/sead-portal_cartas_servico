@@ -1,24 +1,24 @@
 /* Css para o tutorial de cadastro de serviços */
 
 /* Seções do tutorial */
-.tutorial-section {
+.main-content .tutorial-section {
     margin-bottom: 2.5rem;
     padding-bottom: 2rem;
     border-bottom: 2px solid var(--light-bg);
 }
 
-.tutorial-section:last-child {
+.main-content .tutorial-section:last-child {
     border-bottom: none;
 }
 
-.tutorial-section h2 {
+.main-content .tutorial-section h2 {
     margin-bottom: 1rem;
     color: var(--primary-color);
     font-size: 1.5rem;
     font-weight: 700;
 }
 
-.tutorial-section p {
+.main-content .tutorial-section p {
     line-height: 1.6;
     color: var(--text-color);
     margin-bottom: 1rem;
@@ -171,11 +171,11 @@
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .tutorial-section {
+    .main-content .tutorial-section {
         margin-bottom: 2rem;
     }
 
-    .tutorial-section h2 {
+    .main-content .tutorial-section h2 {
         font-size: 1.3rem;
     }
 

@@ -20,8 +20,12 @@
 }
 
 #sidebar-container {
-    display: flex;
-    align-items: stretch;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    z-index: 1000;
 }
 
 /* Responsividade */

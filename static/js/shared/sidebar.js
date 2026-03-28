@@ -2,7 +2,7 @@
 const SidebarModule = (() => {
     const getMenuToggle = () => document.getElementById('menuToggle');
     const getSideMenu = () => document.getElementById('sideMenu');
-    const getSidebarCollapseBtn = () => document.getElementById('sidebarCollapseBtn');
+    let hoverCloseTimeout = null;
 
     // Ajusta os links do sidebar conforme a página atual
     const normalizeLinks = () => {
@@ -33,19 +33,28 @@ const SidebarModule = (() => {
     const init = () => {
         const menuToggle = getMenuToggle();
         const sideMenu = getSideMenu();
-        const sidebarCollapseBtn = getSidebarCollapseBtn();
 
         normalizeLinks();
         initTutorialToggles();
 
-        // Menu toggle para mobile
-        if (menuToggle) {
-            menuToggle.addEventListener('click', toggleMobileMenu);
+        // Mantém o menu oculto inicialmente em todas as telas
+        if (sideMenu) {
+            UtilsModule.addClass(sideMenu, 'collapsed');
         }
 
-        // Botão de compressão para desktop
-        if (sidebarCollapseBtn) {
-            sidebarCollapseBtn.addEventListener('click', toggleCompressionMenu);
+        if (menuToggle) {
+            UtilsModule.removeClass(menuToggle, 'active');
+        }
+
+        // Menu toggle para mobile
+        if (menuToggle) {
+            menuToggle.addEventListener('mouseenter', handleMenuToggleHoverEnter);
+            menuToggle.addEventListener('mouseleave', handleHoverLeave);
+        }
+
+        if (sideMenu) {
+            sideMenu.addEventListener('mouseenter', handleMenuHoverEnter);
+            sideMenu.addEventListener('mouseleave', handleHoverLeave);
         }
 
         // Links do menu
@@ -97,12 +106,27 @@ const SidebarModule = (() => {
         }
     };
 
-    // Toggle de compressão do menu (desktop)
-    const toggleCompressionMenu = () => {
-        const sideMenu = getSideMenu();
-        if (!sideMenu) return;
+    const clearHoverTimeout = () => {
+        if (hoverCloseTimeout) {
+            clearTimeout(hoverCloseTimeout);
+            hoverCloseTimeout = null;
+        }
+    };
 
-        UtilsModule.toggleClass(sideMenu, 'compressed');
+    const handleMenuToggleHoverEnter = () => {
+        clearHoverTimeout();
+        openMobileMenu();
+    };
+
+    const handleMenuHoverEnter = () => {
+        clearHoverTimeout();
+    };
+
+    const handleHoverLeave = () => {
+        clearHoverTimeout();
+        hoverCloseTimeout = setTimeout(() => {
+            closeMobileMenu();
+        }, 120);
     };
 
     // Fecha o menu em telas pequenas
@@ -111,10 +135,8 @@ const SidebarModule = (() => {
         const sideMenu = getSideMenu();
         if (!sideMenu) return;
 
-        if (UtilsModule.isMobile()) {
-            UtilsModule.addClass(sideMenu, 'collapsed');
-            menuToggle && UtilsModule.removeClass(menuToggle, 'active');
-        }
+        UtilsModule.addClass(sideMenu, 'collapsed');
+        menuToggle && UtilsModule.removeClass(menuToggle, 'active');
     };
 
     // Abre o menu em telas pequenas
@@ -123,10 +145,8 @@ const SidebarModule = (() => {
         const sideMenu = getSideMenu();
         if (!sideMenu) return;
 
-        if (UtilsModule.isMobile()) {
-            UtilsModule.removeClass(sideMenu, 'collapsed');
-            menuToggle && UtilsModule.addClass(menuToggle, 'active');
-        }
+        UtilsModule.removeClass(sideMenu, 'collapsed');
+        menuToggle && UtilsModule.addClass(menuToggle, 'active');
     };
 
     // Comportamento ao clicar em um link do menu
@@ -146,7 +166,7 @@ const SidebarModule = (() => {
         const isClickInsideMenu = sideMenu.contains(event.target);
         const isClickOnToggle = menuToggle.contains(event.target);
 
-        if (!isClickInsideMenu && !isClickOnToggle && UtilsModule.isMobile()) {
+        if (!isClickInsideMenu && !isClickOnToggle && !UtilsModule.hasClass(sideMenu, 'collapsed')) {
             closeMobileMenu();
         }
     };
@@ -158,16 +178,13 @@ const SidebarModule = (() => {
         if (!sideMenu) return;
 
         if (UtilsModule.isDesktop()) {
-            // Limpar classes mobile em desktop
-            UtilsModule.removeClass(sideMenu, 'collapsed');
-            menuToggle && UtilsModule.removeClass(menuToggle, 'active');
+            return;
         }
     };
 
     return {
         init,
         toggleMobileMenu,
-        toggleCompressionMenu,
         closeMobileMenu,
         openMobileMenu
     };
