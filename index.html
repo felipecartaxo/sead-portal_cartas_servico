@@ -1,11 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portal de Tutoriais - Centro de Atualizações</title>
+    
+    <!-- ========== Css global ========== -->
+    <link rel="stylesheet" href="css/main.css">
+    
+    <!-- ========== Css do layout principal ========== -->
+    <link rel="stylesheet" href="css/layouts/grid.css">
+    
+    <!-- ========== Css dos componentes ========== -->
+    <link rel="stylesheet" href="css/shared/header.css">
+    <link rel="stylesheet" href="css/shared/sidebar.css">
+    <link rel="stylesheet" href="css/shared/footer.css">
+    
+    <!-- ========== Css da home page ========== -->
+    <link rel="stylesheet" href="css/components/hero.css">
+    <link rel="stylesheet" href="css/pages/index.css">
 </head>
 <body>
+    <div class="container">
+        <!-- ========== Header ========== -->
+        <div id="header-container"></div>
+
+        <!-- ========== Layout principal ========== -->
+        <div class="layout-wrapper">
+            <!-- ========== Sidebar ========== -->
+            <div id="sidebar-container"></div>
+
+            <!-- ========== Conteúdo principal ========== -->
+            <main class="main-content">
+                <!-- ========== Hero section ========== -->
+                <section class="hero-section">
+                    <div class="hero-content">
+                        <h2>Portal de Tutoriais</h2>
+                        <p>Conteúdo institucional e informações gerais da nossa central de serviços.</p>
+                    </div>
+                </section>
+
+                <div class="content-wrapper">
+                    <section class="updates-section" style="margin-left: 50px;">
+                        <h2 style="margin-top: 20px;">Sobre o Portal</h2>
+
+                        <div class="update-card">
+                            <h3>Apresentação</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget augue nisl. Donec lacinia, massa sed finibus feugiat, purus erat fermentum lectus, et fermentum sem justo vitae turpis. Curabitur feugiat lorem ut nunc lobortis, in lacinia ante egestas.</p>
+                            <p>Phasellus pretium eros non turpis feugiat, id placerat leo iaculis. Nullam tincidunt justo a neque lacinia, id convallis libero mollis. Integer aliquet, risus nec luctus fringilla, neque sem dignissim lectus, non porta sem nisi et urna.</p>
+                        </div>
+
+                        <div class="update-card">
+                            <h3>Informações Gerais</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pharetra faucibus mauris, sed rhoncus lorem tincidunt ac. Aenean nec convallis nisi. Donec tristique, augue sed blandit finibus, elit ipsum sodales risus, vel congue libero dolor eget nisl.</p>
+                            <p>Praesent nec luctus lacus, in vulputate orci. Aliquam erat volutpat. Pellentesque accumsan, lectus in tincidunt bibendum, augue ipsum volutpat purus, non aliquam enim odio eu erat.</p>
+                        </div>
+
+                        <div class="update-card">
+                            <h3>Como Navegar</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices ante ac tortor dignissim, id porta est facilisis. Use o menu lateral para abrir cada tutorial e acessar suas seções específicas, como Introdução, Requisitos e Procedimento.</p>
+                            <p>Maecenas ut dui faucibus, eleifend leo in, cursus nunc. Fusce pellentesque velit et turpis ultrices, in dictum velit vulputate.</p>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+
+        <!-- ========== Footer ========== -->
+        <div id="footer-container"></div>
+    </div>
+
+    <!-- ========== Scripts compartilhados ========== -->
+    <script src="static/js/shared/utils.js"></script>
+    <script src="static/js/shared/sidebar.js"></script>
     
+    <!-- ========== Loader de componentes ========== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carregar header
+            fetch('html/components/header.html')
+                .then(response => response.text())
+                .then(html => document.getElementById('header-container').innerHTML = html);
+            
+            // Carregar sidebar
+            fetch('html/components/sidebar.html')
+                .then(response => response.text())
+                .then(html => document.getElementById('sidebar-container').innerHTML = html)
+                .then(() => {
+                    // Inicializar sidebar após carregamento
+                    if (typeof SidebarModule !== 'undefined') {
+                        SidebarModule.init();
+                    }
+                });
+            
+            // Carregar footer
+            fetch('html/components/footer.html')
+                .then(response => response.text())
+                .then(html => document.getElementById('footer-container').innerHTML = html);
+        });
+    </script>
 </body>
 </html>
