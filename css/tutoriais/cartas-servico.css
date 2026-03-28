@@ -146,6 +146,11 @@
     font-weight: 600;
     color: var(--primary-color);
     user-select: none;
+    list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
 }
 
 .faq-item summary:hover {

@@ -98,6 +98,27 @@
     color: var(--text-color);
 }
 
+/* Lista de finalização */
+.finalization-items {
+    list-style: none;
+    padding: 0;
+}
+
+.finalization-items li {
+    padding: 0.7rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: var(--text-color);
+}
+
+.finalization-items li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
 /* FAQ com detalhes */
 .faq-container {
     margin-top: 1.5rem;
@@ -117,9 +138,14 @@
     font-weight: 600;
     color: var(--primary-color);
     user-select: none;
+    list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
 }
 
 .faq-item summary:hover {
