@@ -8,6 +8,8 @@
 .layout-wrapper {
     display: flex;
     flex: 1;
+    align-items: stretch;
+    min-height: 0;
 }
 
 .main-content {
@@ -15,6 +17,11 @@
     background-color: var(--light-gray);
     min-height: 100%;
     overflow-y: auto;
+}
+
+#sidebar-container {
+    display: flex;
+    align-items: stretch;
 }
 
 /* Responsividade */
