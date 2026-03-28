@@ -1,0 +1,58 @@
+/* Css comum para todas as seções de tutorial */
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    background-color: var(--white);
+}
+
+.tutorial-content {
+    margin-bottom: 3rem;
+    scroll-margin-top: 100px;
+}
+
+.tutorial-content h2 {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+}
+
+.tutorial-content p {
+    color: #555;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 2rem 1.5rem;
+    }
+
+    .tutorial-content h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-wrapper {
+        padding: 1.5rem 1rem;
+    }
+
+    .tutorial-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .tutorial-content p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .content-wrapper {
+        max-width: 1000px;
+    }
+}

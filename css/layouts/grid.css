@@ -1,0 +1,25 @@
+/* Css do layout principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.layout-wrapper {
+    display: flex;
+    flex: 1;
+}
+
+.main-content {
+    flex: 1;
+    background-color: var(--light-gray);
+    min-height: 100%;
+    overflow-y: auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .layout-wrapper {
+        flex-direction: column;
+    }
+}

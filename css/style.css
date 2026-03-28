@@ -1,0 +1,536 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #2c3e50;
+    --light-bg: #ecf0f1;
+    --light-gray: #f8f9fa;
+    --white: #ffffff;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --menu-width: 280px;
+    --transition-speed: 0.3s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* =========================
+   CONTAINER E LAYOUT
+   ========================= */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.layout-wrapper {
+    display: flex;
+    flex: 1;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+.header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    flex: 1;
+}
+
+/* =========================
+   BOTÃO HAMBURGUÊS
+   ========================= */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    gap: 0.4rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed) ease;
+    color: var(--white);
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--white);
+    border-radius: 2px;
+    transition: all var(--transition-speed) ease;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.05);
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* =========================
+   MENU LATERAL
+   ========================= */
+.side-menu {
+    width: var(--menu-width);
+    background-color: var(--white);
+    border-right: 1px solid #ddd;
+    box-shadow: var(--shadow);
+    overflow-y: auto;
+    transition: all var(--transition-speed) ease;
+    padding: 1.5rem 0;
+    height: calc(100vh - 70px);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.side-menu.collapsed {
+    display: none;
+}
+
+.side-menu.compressed {
+    width: 70px;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+.side-menu.compressed .menu-nav {
+    display: none;
+}
+
+.side-menu.compressed .sidebar-collapse-btn {
+    justify-content: center;
+    position: static;
+    width: 100%;
+    padding: 1rem;
+    border: none;
+}
+
+.side-menu.compressed .sidebar-collapse-btn .collapse-arrow {
+    transform: scaleX(-1);
+}
+
+.menu-nav {
+    padding: 0 1rem;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.menu-nav h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* Botão de Comprimir/Expandir */
+.sidebar-collapse-btn {
+    background: none;
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    padding: 1rem 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    transition: all var(--transition-speed) ease;
+    flex-shrink: 0;
+    height: 50px;
+    min-height: 50px;
+}
+
+.sidebar-collapse-btn:hover {
+    background-color: var(--light-bg);
+    color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+.sidebar-collapse-btn .collapse-arrow {
+    display: block;
+    transition: transform var(--transition-speed) ease;
+}
+
+/* Seção de Tutorial */
+.tutorial-section {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tutorial-section:last-child {
+    border-bottom: none;
+}
+
+.tutorial-title {
+    width: 100%;
+    padding: 0.75rem 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all var(--transition-speed) ease;
+    text-align: left;
+}
+
+.tutorial-title:hover {
+    background-color: var(--light-bg);
+    color: var(--secondary-color);
+    transform: translateX(5px);
+    border-radius: 4px;
+}
+
+.tutorial-title .toggle-arrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    transition: transform var(--transition-speed) ease;
+    margin-left: auto;
+}
+
+.tutorial-title.active .toggle-arrow {
+    transform: rotate(180deg);
+}
+
+.tutorial-submenu {
+    list-style: none;
+    display: none;
+    overflow: hidden;
+    animation: slideDown var(--transition-speed) ease;
+}
+
+.tutorial-submenu.show {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 500px;
+    }
+}
+
+.tutorial-submenu li {
+    margin: 0;
+}
+
+.tutorial-submenu a {
+    display: block;
+    padding: 0.6rem 1.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all var(--transition-speed) ease;
+    font-size: 0.9rem;
+    border-left: 3px solid transparent;
+}
+
+.tutorial-submenu a:hover {
+    background-color: var(--light-bg);
+    color: var(--secondary-color);
+    border-left-color: var(--secondary-color);
+    transform: translateX(5px);
+}
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+   ========================= */
+.main-content {
+    flex: 1;
+    background-color: var(--light-gray);
+    min-height: 100%;
+    overflow-y: auto;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    padding: 3rem 2rem;
+    border-bottom: 4px solid var(--accent-color);
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.hero-content > p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
+.tutorial-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all var(--transition-speed) ease;
+}
+
+.card:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    background-color: var(--white);
+}
+
+.tutorial-content {
+    margin-bottom: 3rem;
+    scroll-margin-top: 100px;
+}
+
+.tutorial-content h2 {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+}
+
+.tutorial-content p {
+    color: #555;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* Barra de rolagem */
+.side-menu::-webkit-scrollbar {
+    width: 8px;
+}
+
+.side-menu::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+
+.side-menu::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 4px;
+}
+
+.side-menu::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+/* Tablets (768px e abaixo) */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .sidebar-collapse-btn {
+        display: none;
+    }
+
+    .title {
+        font-size: 1.3rem;
+    }
+
+    .layout-wrapper {
+        flex-direction: column;
+    }
+
+    .side-menu {
+        position: fixed;
+        left: 0;
+        top: 70px;
+        height: calc(100vh - 70px);
+        z-index: 1000;
+        border-right: 2px solid var(--secondary-color);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+        width: var(--menu-width);
+        display: flex;
+    }
+
+    .side-menu.collapsed {
+        display: none;
+    }
+
+    .main-content {
+        width: 100%;
+        min-height: 100%;
+    }
+
+    .hero-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content > p {
+        font-size: 1rem;
+    }
+
+    .tutorial-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .content-wrapper {
+        padding: 2rem 1.5rem;
+    }
+
+    .tutorial-content h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Mobile (480px e abaixo) */
+@media (max-width: 480px) {
+    .header {
+        padding: 0.75rem;
+        gap: 1rem;
+    }
+
+    .title {
+        font-size: 1.1rem;
+    }
+
+    .menu-nav h3 {
+        font-size: 0.95rem;
+    }
+
+    .tutorial-title {
+        font-size: 0.85rem;
+        padding: 0.6rem 0.5rem;
+    }
+
+    .tutorial-submenu a {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .hero-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content > p {
+        font-size: 0.9rem;
+    }
+
+    .content-wrapper {
+        padding: 1.5rem 1rem;
+    }
+
+    .tutorial-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .tutorial-content p {
+        font-size: 0.95rem;
+    }
+
+    .card h3 {
+        font-size: 1rem;
+    }
+
+    .card p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Grandes telas (1200px+) */
+@media (min-width: 1200px) {
+    .content-wrapper {
+        max-width: 1000px;
+    }
+
+    .hero-content {
+        max-width: 1000px;
+    }
+}
+
