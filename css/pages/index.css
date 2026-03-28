@@ -4,10 +4,12 @@
 as atualizações (ex.: caso adicionarmos
 um novo tutorial, o mesmo ser exibido lá) */
 .updates-section {
+    margin-left: 50px;
     margin-bottom: 3rem;
 }
 
 .updates-section h2 {
+    margin-top: 20px;
     margin-bottom: 2rem;
     color: var(--primary-color);
     font-size: 1.8rem;
